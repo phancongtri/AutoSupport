@@ -1,5 +1,8 @@
 const TelegramBot = require("node-telegram-bot-api");
-const sqlite3 = require("sqlite3").verbose();
+const Database = require('better-sqlite3');
+const db = new Database('database.db');
+
+
 
 // Thay token bot của bạn vào đây
 const TOKEN = "7733831697:AAGSddOxoMeEm12LoxRd3t8ubLM6EnyUf78";
