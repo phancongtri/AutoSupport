@@ -4,8 +4,7 @@
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js",
-    "heroku-postbuild": "npm install --prefer-offline --no-audit",
-    "postinstall": "rm -rf node_modules package-lock.json && npm install"
+    "postinstall": "rm -rf node_modules package-lock.json && npm install --force"
   },
   "dependencies": {
     "node-telegram-bot-api": "^0.66.0",
