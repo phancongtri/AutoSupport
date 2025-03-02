@@ -1,6 +1,14 @@
 const TelegramBot = require("node-telegram-bot-api");
-const Database = require('better-sqlite3');
-const db = new Database('database.db');
+const { Client } = require('pg');
+
+const db = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }
+});
+
+db.connect()
+  .then(() => console.log("📌 Connected to PostgreSQL!"))
+  .catch(err => console.error("❌ Connection error:", err));
 
 
 
