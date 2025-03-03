@@ -1,9 +1,8 @@
 const { Pool } = require("pg");
-require("dotenv").config();
 
 // Kiểm tra nếu DATABASE_URL không tồn tại
 if (!process.env.DATABASE_URL) {
-  console.error("🔴 Lỗi: DATABASE_URL không được thiết lập!");
+  console.error("🔴 Lỗi: DATABASE_URL không được thiết lập trên Railway!");
   process.exit(1);
 }
 
