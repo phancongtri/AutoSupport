@@ -1,14 +1,16 @@
 const { Pool } = require("pg");
 
-// Kiểm tra nếu DATABASE_URL không tồn tại
+// Debug xem Railway có nhận DATABASE_URL không
+console.log("📌 DEBUG: DATABASE_URL hiện tại:", process.env.DATABASE_URL);
+
 if (!process.env.DATABASE_URL) {
   console.error("🔴 Lỗi: DATABASE_URL không được thiết lập trên Railway!");
   process.exit(1);
 }
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL, 
-  ssl: { rejectUnauthorized: false }, // Bắt buộc cho Railway
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false } // Bắt buộc cho Railway
 });
 
 // Kiểm tra kết nối PostgreSQL
