@@ -1,14 +1,23 @@
 const { Pool } = require("pg");
 require("dotenv").config();
 
+// Kiểm tra nếu DATABASE_URL không tồn tại
+if (!process.env.DATABASE_URL) {
+  console.error("🔴 Lỗi: DATABASE_URL không được thiết lập!");
+  process.exit(1);
+}
+
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
+  connectionString: process.env.DATABASE_URL, 
+  ssl: { rejectUnauthorized: false }, // Bắt buộc cho Railway
 });
 
-// Kiểm tra kết nối
+// Kiểm tra kết nối PostgreSQL
 pool.connect()
   .then(() => console.log("🟢 Kết nối PostgreSQL thành công!"))
-  .catch(err => console.error("🔴 Lỗi kết nối PostgreSQL:", err));
+  .catch(err => {
+    console.error("🔴 Lỗi kết nối PostgreSQL:", err);
+    process.exit(1);
+  });
 
 module.exports = pool;
