@@ -1,7 +1,7 @@
 const { Pool } = require("pg");
 
-// Debug xem Railway có nhận DATABASE_URL không
-console.log("📌 DEBUG: DATABASE_URL hiện tại:", process.env.DATABASE_URL);
+// In ra danh sách toàn bộ biến môi trường để debug
+console.log("📌 DEBUG: Toàn bộ biến môi trường trên Railway:", process.env);
 
 if (!process.env.DATABASE_URL) {
   console.error("🔴 Lỗi: DATABASE_URL không được thiết lập trên Railway!");
